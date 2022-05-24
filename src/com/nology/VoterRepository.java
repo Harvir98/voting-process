@@ -2,7 +2,6 @@ package com.nology;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class VoterRepository {
 
@@ -19,7 +18,7 @@ public class VoterRepository {
         voterList.add(voter);
     }
 
-    public boolean verifyUser(int id, String password) {
+    public boolean isVerified(int id, String password) {
         for (Voter voter: voterList) {
             if(voter.getId() == id && voter.getPassword().equals(password)) {
                 return true;
@@ -33,4 +32,6 @@ public class VoterRepository {
                 .findFirst()
                 .get();
     }
+
+
 }

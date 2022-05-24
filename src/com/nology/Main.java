@@ -8,6 +8,7 @@ public class Main {
 
         Voter voter1 = new Voter("Harvir", "Gill", 1234, "matt");
 
+
         VoterRepository voterRepository = new VoterRepository();
         voterRepository.addVoter(voter1);
 

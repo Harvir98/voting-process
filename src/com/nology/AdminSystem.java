@@ -44,15 +44,16 @@ public class AdminSystem {
         login();
     }
 
+
     public void login() {
         System.out.println("Please log in");
         System.out.println("Please enter your ID");
         int id = scanner.nextInt();
         System.out.println("Please enter your Password");
         String password = scanner.next();
-
-        if(voterRepository.verifyUser(id, password)) {
+        if(voterRepository.isVerified(id, password)) {
             voter = voterRepository.getVoterById(id);
+            System.out.println(voter.isHasVoted());
             votingSystem();
         } else {
             login();
@@ -80,6 +81,7 @@ public class AdminSystem {
         int vote = scanner.nextInt();
 
         candidateRepository.castVote(vote - 1);
+        voter.setHasVoted(true);
     }
 
 
