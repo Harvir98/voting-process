@@ -6,12 +6,13 @@ import java.util.Scanner;
 public class AdminSystem {
 
     private Voter voter;
-    private Candidate candidate;
+    private CandidateRepository candidateRepository;
     private final Scanner scanner = new Scanner(System.in);
     private VoterRepository voterRepository;
 
-    public AdminSystem(VoterRepository voterRepository) {
+    public AdminSystem(VoterRepository voterRepository, CandidateRepository candidateRepository) {
         this.voterRepository = voterRepository;
+        this.candidateRepository = candidateRepository;
     }
 
     public void run() {
@@ -74,8 +75,14 @@ public class AdminSystem {
     }
 
     public void votingSystem() {
-        System.out.println("Welcome " + voter.getFirstName() + " " + voter.getLastName());
+        System.out.println("Please enter the candidate you wish to vote for");
+        candidateRepository.printCandidates();
+        int vote = scanner.nextInt();
 
+        candidateRepository.castVote(vote - 1);
     }
+
+
+
 
 }
